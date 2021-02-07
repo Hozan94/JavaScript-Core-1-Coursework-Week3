@@ -7,7 +7,21 @@
   Tip: use the string method .split() and the array method .join()
 */
 
-function capitalise(str) {}
+function capitalise(str) {
+  let capLetter = str.charAt(0).toUpperCase();  //Make the first letter in the string as capital and assign it as a new value to a variable 
+  let arr = capLetter.split("");                //To make the new string letter as a string inside an array; 
+  let newArr = arr.concat(str.slice(1));        //Create a new array which contains the variable 'capLetter' and the letters in 'str' from index 1 and onward. 
+  let newWord = newArr.join("");                //Make the new array as a string
+  return newWord;
+}
+
+function capitalise(str) {                      //Another method;
+  let arr = str.split();
+  let cap = arr[0][0].toUpperCase();
+  let capWord = cap + str.slice(1);
+  return capWord;
+}
+
 
 /* 
   DO NOT EDIT BELOW THIS LINE

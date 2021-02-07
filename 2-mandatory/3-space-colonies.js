@@ -15,7 +15,11 @@
   
 */
 
-function colonisers() {}
+function colonisers(arr) {
+  let getFamilyName = arr.filter(str => str.includes("family"));              // we get an array of ['Adam family', 'Potter family', 'Button family', 'Oscar family', 'Avery family', 'Archer family'] 
+  let familyNameWithA = getFamilyName.filter(str => str.charAt(0) === 'A')    
+  return familyNameWithA;
+}
 
 /* ======= TESTS - DO NOT MODIFY ===== */
 

@@ -11,7 +11,43 @@
     Some string methods that might help you here are .replace() and .substring(). 
 */
 
-function safeLevels() {}
+// Method 1
+function findNum(elem){                                         
+  return parseFloat(elem) > 19.5 && parseFloat(elem) < 23.5;
+    
+}
+function safeLevels(arr) {
+  let firstCorrectLevel = arr.find(findNum)
+  return firstCorrectLevel;
+  
+}
+
+// Method 2
+function newNum(elem){
+  return parseFloat(elem);
+}
+function correctNum(num){
+  return num > 19.5 && num < 23.5;
+}
+function safeLevels(arr) {
+let newArrWithNum = arr.map(newNum);
+let correctLevel = newArrWithNum.find(correctNum) + "%";
+return correctLevel;
+}
+
+//Method 2 shortcut:
+let safeLevels = arr => arr.map(elem => parseFloat(elem)).find(num => num > 19.5 && num < 23.5) + "%";
+
+
+//Method 3 invalid
+// function eachStr(str){
+// return str;
+// }
+// function safeLevels(arr) {
+//   let newArr = arr.map(replace(eachStr,parseFloat(eachStr)));
+//   let correctLevel = newArr.find(correctNum) + "%";
+//   return correctLevel;
+// }
 
 /* ======= TESTS - DO NOT MODIFY ===== */
 

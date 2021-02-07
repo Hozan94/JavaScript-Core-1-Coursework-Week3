@@ -20,8 +20,8 @@
 function checkCodeIsThere(stringText) {
   let magicWord = "code";
   //edit code below
-  if (stringText) {
-    return stringText;
+  if (stringText.includes("code")) {
+    return stringText.indexOf("code");
   } else {
     return "Not found";
   }
@@ -64,7 +64,10 @@ function checkCodeIsThere(stringText) {
   
   Hint: Use the corresponding array method to split the array.
 */
-function getTransportModes() {}
+function getTransportModes(arr) {
+   return arr.slice(1);
+
+}
 
 /*
   Implement the function isAccessibleByTransportMode that
@@ -81,7 +84,9 @@ function getTransportModes() {}
     
   Hint: Use the corresponding array method to decide if an element is member of an array.
 */
-function isAccessibleByTransportMode() {}
+function isAccessibleByTransportMode(arr,str) {
+  return arr.includes(str);
+}
 
 /*
   Implement the function getLocationName that
@@ -92,7 +97,9 @@ function isAccessibleByTransportMode() {}
    - Returns the name of the location
       e.g: "Tower Bridge"
 */
-function getLocationName() {}
+function getLocationName(arr) {
+  return arr[0];
+}
 
 /*
  We arrived at the final method. it won't take long if you use the previously implemented functions wisely.
@@ -121,9 +128,27 @@ function getLocationName() {}
    
   Advanced challange: try to use arrow function when invoking an array method.
 */
-function journeyPlanner(locations, transportMode) {
-  // Implement the function body
+
+// IS there a way to apply all the functions above and deliver the same results
+//  function journeyPlanner(locations, transportMode) {
+//   let arr1 =locations.map(getTransportModes);
+//   let arr2 = locations.filter(isAccessibleByTransportMode(arr1, transportMode));
+//   let arr3 = arr2.map(getLocationName(locations))
+//   console.log(arr2);
+// return arr3;
+
+// }
+
+// Method 1
+ function journeyPlanner(locations, transportMode) {
+  let correctTransportMode = locations.filter(str => str.includes(transportMode));
+  let possibleLocations = correctTransportMode.map(getLocationName);
+  return possibleLocations;
 }
+
+//Method 2
+
+let journeyPlanner = (locations, transportMode) => locations.filter(arr => arr.includes(transportMode)).map(newArr => newArr[0]);
 
 /* ======= TESTS - DO NOT MODIFY ===== */
 
