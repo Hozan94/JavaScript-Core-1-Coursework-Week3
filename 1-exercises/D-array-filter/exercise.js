@@ -9,7 +9,7 @@
 var pairsByIndexRaw = [[0, 3], [1, 2], [2, 1], null, [1], false, "whoops"];
 
 function isIndex(eachIndex){                        //Can be done as an arrow function
-  return Array.isArray(eachIndex);
+  return Array.isArray(eachIndex) && eachIndex.length === 2;
 }
 var pairsByIndex = pairsByIndexRaw.filter(isIndex); // Complete this statement
 

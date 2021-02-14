@@ -9,6 +9,7 @@
 
 var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 
+// Method 1
 function multipliesOfThreeAndFive(eachNum){
   if( eachNum % 3 === 0 &&  eachNum % 5 !== 0){
     console.log(eachNum = 'Fizz'); 
@@ -16,6 +17,20 @@ function multipliesOfThreeAndFive(eachNum){
     console.log(eachNum = 'Buzz');
   } else if (eachNum % 5 === 0 && eachNum % 3 === 0){
     console.log(eachNum = 'FizzBuzz');
+  } else {
+    console.log(eachNum);
+  }
+  
+}
+
+//Method 2
+function multipliesOfThreeAndFive(eachNum){
+  if( eachNum % 3 === 0 &&  eachNum % 5 === 0){
+    console.log(eachNum = 'FizzBuzz'); 
+  } else if (eachNum % 3 === 0) {
+    console.log(eachNum = 'Fizz');
+  } else if (eachNum % 5 === 0){
+    console.log(eachNum = 'Buzz');
   } else {
     console.log(eachNum);
   }

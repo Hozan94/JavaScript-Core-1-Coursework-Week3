@@ -16,8 +16,8 @@ function capitalise(str) {
 }
 
 function capitalise(str) {                      //Another method;
-  let arr = str.split();
-  let cap = arr[0][0].toUpperCase();
+  let arr = str.split("");
+  let cap = arr[0].toUpperCase();
   let capWord = cap + str.slice(1);
   return capWord;
 }
