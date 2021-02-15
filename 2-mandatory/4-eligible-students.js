@@ -15,10 +15,43 @@ function eligibleStudents(arrays) {
 }
 
 // Method 2
-function eligibleStudents(arrays) {
-  let studentsName = arrays.filter(arr => arr[1] >= 8).map(arr => arr[0]);
-  return studentsName;
+function eligibleStudents(students) {
+  const minimumClasses = 8;
+  const nameIndex = 0;
+  const attendanceIndex = 1;
+  return students.filter(student => student[attendanceIndex] >= minimumClasses).map(student => students[nameIndex]);
 }
+
+// Method 3 from the "solution"
+
+// solution-1
+function eligibleStudents(students) {
+  const eligibleStudents = students.filter(function (student) {
+    const attendanceCount = student[1];
+    return attendanceCount >= 8;
+  });
+  const eligibleNames = eligibleStudents.map(function (student) {
+    return student[0];
+  });
+  return eligibleNames;
+}
+// Here we're using two array methods - filter first followed by map. We use filter first in order to get the all the students with an attendanceCount greater than or equal to 8.
+//  We then have to use map in order to access the name in each of the arrays.
+// We could have also chained the two array methods like this:
+
+// solution-2
+function eligibleStudents(students) {
+  const eligibleStudents = students
+    .filter(function (student) {
+      const attendanceCount = student[1];
+      return attendanceCount >= 8;
+    })
+    .map(function (student) {
+      return student[0];
+    });
+  return eligibleNames;
+}
+
 
 /* ======= TESTS - DO NOT MODIFY ===== */
 

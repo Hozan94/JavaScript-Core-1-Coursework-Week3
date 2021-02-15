@@ -31,6 +31,32 @@ function bushChecker(arr) {
 }
 
 
+// Method 2 from the "Solutions"
+
+function bushChecker(bush) {
+  const safeMessage = "Bush is safe to eat from";
+  const warningMessage = "Toxic! Leave bush alone!";
+
+  const isSafeToEat = bush.every(function (berry) {
+    return berry === "pink";
+  });
+
+  return isSafeToEat ? safeMessage : warningMessage;
+}
+// In bushChecker we've use the array method .every() which essentially checks if every item in an array meets some condition.
+// If we try and talk aloud about what this piece of code is doing
+
+bush.every(function (berry) {
+  return berry === "pink";
+});
+
+// it would sound something like this:
+
+/*"Hey there, please run through the array called bush access each item ( labelled berry ) and then check to see if it is "pink". 
+If every berry is "pink" then .every() will return true to show that every item has met our condition
+ otherwise .every() will return false to show that at least one item failed to meet our condition."
+*/
+
 
 /* ======= TESTS - DO NOT MODIFY ===== */
 

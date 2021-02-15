@@ -15,11 +15,56 @@
   
 */
 
+// Method 1
 function colonisers(arr) {
   let getFamilyName = arr.filter(str => str.includes("family"));              // we get an array of ['Adam family', 'Potter family', 'Button family', 'Oscar family', 'Avery family', 'Archer family'] 
   let familyNameWithA = getFamilyName.filter(str => str.charAt(0) === 'A')    
   return familyNameWithA;
 }
+
+// Method 2
+function canLiveOnAlpha(eachName) {
+  return eachName.includes("family") && eachName.charAt(0) ==="A";
+}
+function colonisers(listOfNames) {
+ return listOfNames.filter(canLiveOnAlpha);
+}
+
+// Method 3 from "solutions"
+
+// solution-1
+function colonisers(families) {
+  return families.filter(function (family) {
+    const lastName = family.split(" ")[0];
+    const secondItem = family.split(" ")[1];
+
+    return secondItem === "family" && lastName.startsWith("A");
+  });
+}
+
+// In colonisers we're not storing the return value from .filter() in a variable, 
+// instead we're just returning the result of filter straight away:
+
+return families.filter(function (family) {
+  // filtering logic goes here
+});
+
+// We could also use array destructuring syntax in our first solution, 
+// which would provide a concise way for accessing an array and assigning some of its contents to variable names.
+
+
+
+// solution-2
+function colonisers(families) {
+  return families.filter(function (family) {
+    const [lastName, secondItem] = family.split(" ");
+    return secondItem === "family" && lastName.startsWith("A");
+  });
+}
+// On the line, const [lastName,secondItem] = family.split(' '); we're creating two variables lastName and secondItem.
+// lastName is being assigned to whatever is at position 0 on the right hand side
+// secondItem is being assigned to whatever is at position 1 on the right hand side.
+
 
 /* ======= TESTS - DO NOT MODIFY ===== */
 

@@ -20,8 +20,8 @@
 function checkCodeIsThere(stringText) {
   let magicWord = "code";
   //edit code below
-  if (stringText.includes("code")) {
-    return stringText.indexOf("code");
+  if (stringText.includes(magicWord)) {
+    return stringText.indexOf(magicWord);
   } else {
     return "Not found";
   }
@@ -66,7 +66,6 @@ function checkCodeIsThere(stringText) {
 */
 function getTransportModes(arr) {
    return arr.slice(1);
-
 }
 
 /*
@@ -148,7 +147,39 @@ function getLocationName(arr) {
 
 //Method 2
 
-let journeyPlanner = (locations, transportMode) => locations.filter(arr => arr.includes(transportMode)).map(newArr => newArr[0]);
+let journeyPlanner = (locations, transportMode) => locations.filter(location => location.includes(transportMode)).map(location => location[0]);
+
+// Method 3 from the "solutions"
+
+function journeyPlanner(locations, transportMode) {
+  return locations
+    .filter((location) => {
+      return isAccessibleByTransportMode(location, transportMode);
+    })
+    .map((accessibleLocation) => {
+      return getLocationName(accessibleLocation);
+    });
+}
+
+// We can create a solution by using similar reasoning to the previous function. 
+// We need to filter out the array of locations to find those that are acccessible by some transport mode. 
+// Note that if we filter an array of nested arrays then filter is still going to return an array of nested arrays. 
+// filter shouldn't be used to transform the items of an array - only to remove some of its contents according to some condition.
+// We can then apply map to the array of accessible locations to get the location name for each accessible transport.
+
+// We've also used arrow functions instead of the normal function expressions in the previous questions. 
+// In this arrow function expression:
+
+(location) => {
+  return isAccessibleByTransportMode(location, transportMode);
+};
+
+// location is our parameter and the body of the function is still denoted with { } after the => arrow. 
+// For the purposes of this problem, there would be no real difference with using a normal function expression, as shown below:
+
+function n(location) {
+  return isAccessibleByTransportMode(location, transportMode);
+}
 
 /* ======= TESTS - DO NOT MODIFY ===== */
 

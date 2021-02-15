@@ -12,42 +12,53 @@
 */
 
 // Method 1
-function findNum(elem){                                         
+function isSafeLevel(elem){                                         
   return parseFloat(elem) > 19.5 && parseFloat(elem) < 23.5;
     
 }
-function safeLevels(arr) {
-  let firstCorrectLevel = arr.find(findNum)
-  return firstCorrectLevel;
+function safeLevels(levels) {
+  return levels.find(isSafeLevel)
   
 }
 
 // Method 2
-function newNum(elem){
-  return parseFloat(elem);
+function changeToNum(eachLevel){
+  return parseFloat(eachLevel);
 }
-function correctNum(num){
+function isCorrectLevel(num){
   return num > 19.5 && num < 23.5;
 }
-function safeLevels(arr) {
-let newArrWithNum = arr.map(newNum);
-let correctLevel = newArrWithNum.find(correctNum) + "%";
-return correctLevel;
+function safeLevels(levels) {
+let newArrWithNum = levels.map(changeToNum);
+let firstSafeLevel = newArrWithNum.find(isCorrectLevel) + "%";
+return firstSafeLevel;
 }
 
 //Method 2 shortcut:
-let safeLevels = arr => arr.map(elem => parseFloat(elem)).find(num => num > 19.5 && num < 23.5) + "%";
+let safeLevels = levels => levels.map(eachLevel => parseFloat(eachLevel)).find(num => num > 19.5 && num < 23.5) + "%";
 
 
-//Method 3 invalid
-// function eachStr(str){
-// return str;
-// }
-// function safeLevels(arr) {
-//   let newArr = arr.map(replace(eachStr,parseFloat(eachStr)));
-//   let correctLevel = newArr.find(correctNum) + "%";
-//   return correctLevel;
-// }
+//Method 3 from "solutions repo":
+function safeLevels(oxygenLevels) {
+  const safeLevel = oxygenLevels.find(function (level) {
+    const numericalLevel = +level.replace("%", "");
+    const lowerLimit = 19.5;
+    const upperLimit = 23.5;
+    return lowerLimit < numericalLevel && numericalLevel < upperLimit;
+  });
+  return safeLevel;
+}
+
+// In this question, we've used the .find() method as it will return the first item that meets some sort of condition. 
+// The anonymous function does a check to see if the level is between the right limits and returns a boolean. 
+// It should be noted in this question that we've used + to do explicit type coercion - this is when we convert one data type into another. 
+
+// +"100"; // this will evaluate to 100
+// Here the expression +'100' in the snippet above will evaluate to a number.
+
+// We also created the variable safeLevel which stores the return value from calling the .find() array method. 
+// We don't need to create a variable like this however sometimes it can be worth labelling the results of a function call, 
+// especially when it is unclear what a particular expression might mean.
 
 /* ======= TESTS - DO NOT MODIFY ===== */
 

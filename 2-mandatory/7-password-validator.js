@@ -24,6 +24,7 @@ PasswordValidationResult=  [false, false, false, false, true]
 
 */
 
+// Method 1 
 function validatePasswords(passwords) {
     let correctPass = passwords.map((eachPassword, index) => eachPassword.length >= 5 && containsUppercaseLetter(eachPassword) && containsLowercaseLetter(eachPassword) && containsNumber(eachPassword) && containsSymbol(eachPassword) && passwords.indexOf(eachPassword) === index);
     return correctPass;
@@ -49,6 +50,31 @@ function containsSymbol(string) {
     return /[!#$%.*&]/.test(string);
 }
 
+// Method 2 from the "solutions"
+
+function validatePasswords(passwords) {
+  return passwords.map((password) => {
+    const patterns = [/.{5,}/, /[A-Z]/, /[a-z]/, /[0-9]/, /[!#$%.*&]/];
+    const isValidPassword = patterns.every((pattern) => pattern.test(password));
+    return isValidPassword;
+  });
+}
+
+// In this function, we store an array of different regular expressions which will allow us to match certain characters in a password. 
+// For example, the regular expression shown below
+/*
+/[!#$%.*&]/;
+will allow us to match one of the special characters !, #, $, %, ., * or &. Therefore, if we call the in-built function .test() we can check if our password contains one of these special characters:
+
+/[!#$%.*&]/.test(password);
+The expression above will evaluate to a boolean depending on whether the password contains one of the special characters.
+
+So we store all these patterns, like /[!#$%.*&]/, in an array and check that a given password will match of all the given regular expressions:
+
+const patterns = [/.{5,}/, /[A-Z]/, /[a-z]/, /[0-9]/, /[!#$%.*&]/];
+const isValidPassword = patterns.every((pattern) => pattern.test(password));
+Finally, this logic is then applied to each item in the array of passwords by using map.
+*/
 /* ======= TESTS - DO NOT MODIFY ===== */
 
 const passwords1 = ["Se%5", "TktE.TJTU", "384#HsHF", "dvyyeyy!5", "tryT3729"]
